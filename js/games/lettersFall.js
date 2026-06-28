@@ -1,6 +1,3 @@
-(function () {
-  'use strict';
-
 class Word {
   constructor(text, x, y, speed) {
     this.text = text;
@@ -258,12 +255,10 @@ class LettersFallGame {
   }
 }
 
-function init(ui) {
-  if (!ui.start) return; // sección no presente
-
+function initLettersFall(ui) {
   const game = new LettersFallGame(ui);
 
-  ui.start.addEventListener('click', () => game.start());
+  ui.startLetters.addEventListener('click', () => game.start());
 
   ui.lettersInput.addEventListener('input', (event) => {
     const value = event.target.value;
@@ -292,24 +287,7 @@ function init(ui) {
   window.lettersFallGame = game;
 }
 
-function stop() {
+window.stopLettersFall = function () {
   if (window.lettersFallGame) window.lettersFallGame.reset();
-}
-
-window.GameRegistry.register({
-  id:          'letters',
-  name:        'Caída de letras',
-  tag:         'TIPEO',
-  accent:      '#a78bfa',
-  icon:        '⌨️',
-  num:         '05',
-  description: 'Escribe las letras que caen en tiempo real. Si llegan al suelo, el sistema falla.',
-  difficulty:  3,
-  css:         'css/letters.css',
-
-  init,
-  stop,
-  leaderboard: { format: v => `${v} pts` }
-});
-
-}());
+};
+window.initLettersFall = initLettersFall;

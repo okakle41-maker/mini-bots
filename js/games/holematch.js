@@ -1,6 +1,3 @@
-(function () {
-  'use strict';
-
 class HoleMatchGame {
   constructor(ui) {
     this.ui = ui;
@@ -42,17 +39,17 @@ class HoleMatchGame {
       }
     });
 
-    if (this.ui.start) {
-      this.ui.start.addEventListener('click', () => this.start());
+    if (this.ui.startHoleMatch) {
+      this.ui.startHoleMatch.addEventListener('click', () => this.start());
     }
 
-    if (this.ui.holematchDifficulty) {
-      this.ui.holematchDifficulty.addEventListener('change', () => this.updateDifficulty());
+    if (this.ui.difficultySelect) {
+      this.ui.difficultySelect.addEventListener('change', () => this.updateDifficulty());
     }
   }
 
   updateDifficulty() {
-    const value = this.ui.holematchDifficulty.value;
+    const value = this.ui.difficultySelect.value;
     this.state.difficulty = value;
     if (value === 'easy') {
       this.state.speed = 120;
@@ -89,10 +86,10 @@ class HoleMatchGame {
   }
 
   getRequestedTargetCount() {
-    if (!this.ui.holematchTargetCount) {
+    if (!this.ui.targetCountInput) {
       return this.state.targetCount || 8;
     }
-    const value = parseInt(this.ui.holematchTargetCount.value, 10);
+    const value = parseInt(this.ui.targetCountInput.value, 10);
     if (Number.isNaN(value)) {
       return this.state.targetCount || 8;
     }
@@ -252,27 +249,26 @@ class HoleMatchGame {
   }
 
   updateUI() {
-    if (this.ui.holematchProgress) {
-      this.ui.holematchProgress.textContent = `Progreso: ${this.state.progress} / ${this.state.targetCount}`;
+    if (this.ui.progressText) {
+      this.ui.progressText.textContent = `Progreso: ${this.state.progress} / ${this.state.targetCount}`;
     }
-    if (this.ui.holematchMistakes) {
-      this.ui.holematchMistakes.textContent = `Errores: ${this.state.mistakes}`;
+    if (this.ui.mistakesText) {
+      this.ui.mistakesText.textContent = `Errores: ${this.state.mistakes}`;
     }
-    if (this.ui.holematchTimer) {
-      this.ui.holematchTimer.textContent = `Tiempo: ${this.state.timeRemaining.toFixed(1)}s`;
+    if (this.ui.timerText) {
+      this.ui.timerText.textContent = `Tiempo: ${this.state.timeRemaining.toFixed(1)}s`;
     }
-    if (this.ui.holematchMessage) {
-      this.ui.holematchMessage.textContent = this.state.message;
+    if (this.ui.messageText) {
+      this.ui.messageText.textContent = this.state.message;
     }
-    if (this.ui.holematchProgressBar) {
+    if (this.ui.progressBar) {
       const percent = (this.state.progress / this.state.targetCount) * 100;
-      this.ui.holematchProgressBar.style.width = `${percent}%`;
+      this.ui.progressBar.style.width = `${percent}%`;
     }
   }
 }
 
-function init(ui) {
-  if (!ui.start) return; // sección no presente
+function initHoleMatch(ui) {
   const game = new HoleMatchGame(ui);
   window._holeMatchGame = game;
   if (window.ResizeObserver) {
@@ -280,23 +276,7 @@ function init(ui) {
   }
 }
 
-function stop() {
+window.stopHoleMatch = function () {
   if (window._holeMatchGame) window._holeMatchGame.state.active = false;
-}
-
-window.GameRegistry.register({
-  id:          'holematch',
-  name:        'Hole Match',
-  tag:         'PERCEPCIÓN',
-  accent:      '#facc15',
-  icon:        '🔷',
-  num:         '06',
-  description: 'Empareja la forma con el hueco correcto al instante. El margen de error es cero.',
-  difficulty:  2,
-  css:         'css/holematch.css',
-
-  init,
-  stop,
-});
-
-}());
+};
+window.initHoleMatch = initHoleMatch;

@@ -1,6 +1,3 @@
-(function () {
-  'use strict';
-
 class ColorCountGame {
   constructor(ui) {
     this.ui = ui;
@@ -29,24 +26,24 @@ class ColorCountGame {
   }
 
   bindEvents() {
-    if (this.ui.start) {
-      this.ui.start.addEventListener('click', () => this.start());
+    if (this.ui.startButton) {
+      this.ui.startButton.addEventListener('click', () => this.start());
     }
-    if (this.ui.colorcountSubmit) {
-      this.ui.colorcountSubmit.addEventListener('click', () => this.submitAnswer());
+    if (this.ui.submitButton) {
+      this.ui.submitButton.addEventListener('click', () => this.submitAnswer());
     }
-    if (this.ui.colorcountAnswer) {
-      this.ui.colorcountAnswer.addEventListener('input', (event) => {
+    if (this.ui.answerInput) {
+      this.ui.answerInput.addEventListener('input', (event) => {
         this.state.answer = event.target.value;
       });
-      this.ui.colorcountAnswer.addEventListener('keydown', (event) => {
+      this.ui.answerInput.addEventListener('keydown', (event) => {
         if (event.key === 'Enter' && this.state.awaitingAnswer) {
           this.submitAnswer();
         }
       });
     }
-    if (this.ui.colorcountDifficulty) {
-      this.ui.colorcountDifficulty.addEventListener('change', (event) => {
+    if (this.ui.difficultySelect) {
+      this.ui.difficultySelect.addEventListener('change', (event) => {
         this.state.difficulty = event.target.value;
       });
     }
@@ -74,8 +71,8 @@ class ColorCountGame {
     this.state.message = `Escribe cuántos cuadros ${this.state.targetColor} viste.`;
     this.renderGrid();
     this.updateUI();
-    if (this.ui.colorcountAnswer) {
-      this.ui.colorcountAnswer.focus();
+    if (this.ui.answerInput) {
+      this.ui.answerInput.focus();
     }
   }
 
@@ -117,12 +114,12 @@ class ColorCountGame {
   }
 
   renderGrid() {
-    if (!this.ui.colorcountGrid) return;
+    if (!this.ui.gridContainer) return;
     const size = this.state.gridSize;
-    this.ui.colorcountGrid.innerHTML = '';
-    this.ui.colorcountGrid.style.gridTemplateColumns = `repeat(${size}, minmax(0, 1fr))`;
-    this.ui.colorcountGrid.style.justifyItems = 'stretch';
-    this.ui.colorcountGrid.style.alignItems = 'stretch';
+    this.ui.gridContainer.innerHTML = '';
+    this.ui.gridContainer.style.gridTemplateColumns = `repeat(${size}, minmax(0, 1fr))`;
+    this.ui.gridContainer.style.justifyItems = 'stretch';
+    this.ui.gridContainer.style.alignItems = 'stretch';
 
     const displayColors = this.state.active && this.state.showGrid
       ? this.state.cells
@@ -135,7 +132,7 @@ class ColorCountGame {
       if (color !== 'hidden') {
         square.setAttribute('aria-label', `Cuadro de color ${color}`);
       }
-      this.ui.colorcountGrid.appendChild(square);
+      this.ui.gridContainer.appendChild(square);
     });
   }
 
@@ -187,58 +184,42 @@ class ColorCountGame {
   }
 
   updateUI() {
-    if (this.ui.colorcountQuestion) {
+    if (this.ui.questionText) {
       if (!this.state.active) {
-        this.ui.colorcountQuestion.textContent = 'Pulsa iniciar para comenzar';
+        this.ui.questionText.textContent = 'Pulsa iniciar para comenzar';
       } else if (this.state.awaitingAnswer) {
-        this.ui.colorcountQuestion.textContent = `¿Cuántos cuadros ${this.state.targetColor} viste?`;
+        this.ui.questionText.textContent = `¿Cuántos cuadros ${this.state.targetColor} viste?`;
       } else {
-        this.ui.colorcountQuestion.textContent = `Observa los cuadros ${this.state.targetColor}`;
+        this.ui.questionText.textContent = `Observa los cuadros ${this.state.targetColor}`;
       }
     }
 
-    if (this.ui.colorcountMessage) {
-      this.ui.colorcountMessage.textContent = this.state.message;
-      this.ui.colorcountMessage.className = 'colorcount-message';
-      if (this.state.result === 'success') this.ui.colorcountMessage.classList.add('colorcount-success');
-      if (this.state.result === 'failed') this.ui.colorcountMessage.classList.add('colorcount-failed');
+    if (this.ui.messageBox) {
+      this.ui.messageBox.textContent = this.state.message;
+      this.ui.messageBox.className = 'colorcount-message';
+      if (this.state.result === 'success') this.ui.messageBox.classList.add('colorcount-success');
+      if (this.state.result === 'failed') this.ui.messageBox.classList.add('colorcount-failed');
     }
 
-    if (this.ui.colorcountAnswer) {
-      this.ui.colorcountAnswer.disabled = !this.state.awaitingAnswer;
+    if (this.ui.answerInput) {
+      this.ui.answerInput.disabled = !this.state.awaitingAnswer;
       if (!this.state.awaitingAnswer) {
-        this.ui.colorcountAnswer.value = '';
+        this.ui.answerInput.value = '';
       }
     }
-    if (this.ui.colorcountSubmit) {
-      this.ui.colorcountSubmit.disabled = !this.state.awaitingAnswer;
+    if (this.ui.submitButton) {
+      this.ui.submitButton.disabled = !this.state.awaitingAnswer;
     }
   }
 }
 
-function init(ui) {
-  if (!ui.start) return; // sección no presente
+function initColorCount(ui) {
   const game = new ColorCountGame(ui);
   window._colorCountGame = game;
 }
 
-function stop() {
+window.stopColorCount = function () {
   if (window._colorCountGame) window._colorCountGame.state.active = false;
-}
+};
 
-window.GameRegistry.register({
-  id:          'colorcount',
-  name:        'Color Count',
-  tag:         'ANÁLISIS',
-  accent:      '#fb923c',
-  icon:        '🎨',
-  num:         '07',
-  description: 'Cuenta los elementos del color indicado antes de que el tiempo se agote.',
-  difficulty:  3,
-  css:         'css/colorcount.css',
-
-  init,
-  stop,
-});
-
-}());
+window.initColorCount = initColorCount;

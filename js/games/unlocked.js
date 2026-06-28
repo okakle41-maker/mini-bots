@@ -1,61 +1,47 @@
-/**
- * js/games/unlocked.js
- *
- * Migrado al sistema GameRegistry.
- * Elementos esperados (data-ui dentro de <section id="unlocked">):
- *   canvas, startBtn, infoEl, ringCountEl, colorsPerRingEl, granularityEl,
- *   timeLimitEl, roundsEl, showTargetsEl, showLabelsEl,
- *   scoreEl, timerEl, roundEl, ringIndicatorEl, prevRingBtn, nextRingBtn
- */
+function initUnlocked(ui) {
+  const {
+    canvas, startBtn, infoEl,
+    ringCountEl, colorsPerRingEl, granularityEl,
+    timeLimitEl, roundsEl, showTargetsEl, showLabelsEl,
+    scoreEl, timerEl, roundEl, ringIndicatorEl,
+    prevRingBtn, nextRingBtn
+  } = ui;
 
-(function () {
-  'use strict';
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  const PALETTE = [
+    '#f97316', '#818cf8', '#34d399',
+    '#f43f5e', '#fbbf24', '#22d3ee',
+    '#a78bfa', '#ec4899'
+  ];
 
   let timerInterval = null;
+  let flashState    = null;
+  let penaltyParts  = [];
+  let shakeFrames   = 0;
+  let shakeAmt      = 0;
 
-  function init(ui) {
-    const {
-      canvas, startBtn, infoEl,
-      ringCountEl, colorsPerRingEl, granularityEl,
-      timeLimitEl, roundsEl, showTargetsEl, showLabelsEl,
-      scoreEl, timerEl, roundEl, ringIndicatorEl,
-      prevRingBtn, nextRingBtn
-    } = ui;
-
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-
-    const PALETTE = [
-      '#f97316', '#818cf8', '#34d399',
-      '#f43f5e', '#fbbf24', '#22d3ee',
-      '#a78bfa', '#ec4899'
-    ];
-
-    let flashState    = null;
-    let penaltyParts  = [];
-    let shakeFrames   = 0;
-    let shakeAmt      = 0;
-
-    const state = {
-      phase: 'idle',
-      rings: [],
-      selected: 0,
-      ringCount: 3,
-      colorsN: 3,
-      granularity: 4,
-      snapDeg: 30,
-      timeLimit: 0,
-      totalRounds: 3,
-      currentRound: 0,
-      score: 0,
-      timeLeft: 0,
-      solvedRings: [],
-      allSolved: false,
-      ripples: [],
-      startTime: 0,
-      penaltyValue: 5,   // seconds to subtract on error
-      mistakeCount: 0,
-    };
+  const state = {
+    phase: 'idle',
+    rings: [],
+    selected: 0,
+    ringCount: 3,
+    colorsN: 3,
+    granularity: 4,
+    snapDeg: 30,
+    timeLimit: 0,
+    totalRounds: 3,
+    currentRound: 0,
+    score: 0,
+    timeLeft: 0,
+    solvedRings: [],
+    allSolved: false,
+    ripples: [],
+    startTime: 0,
+    penaltyValue: 5,   // seconds to subtract on error
+    mistakeCount: 0,
+  };
 
   /* ── math helpers ── */
   const TAU = Math.PI * 2;
@@ -588,27 +574,10 @@
 
   drawFrame();
   animLoop();
-  }
+}
 
-  function stop() {
-    if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
-    if (typeof state !== 'undefined') state.phase = 'idle';
-  }
-
-  window.GameRegistry.register({
-    id:          'unlocked',
-    name:        'Unlocked',
-    tag:         'ESTRATEGIA',
-    accent:      '#c084fc',
-    icon:        '🔓',
-    num:         '08b',
-    description: 'Alinea los anillos rotantes hasta que todos los colores coincidan con el objetivo.',
-    difficulty:  4,
-    css:         'css/unlocked.css',
-
-    init,
-    stop,
-    leaderboard: { format: v => `${v} rondas` }
-  });
-
-}());
+window.stopUnlocked = function () {
+  if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+  if (typeof state !== 'undefined') state.phase = 'idle';
+};
+window.initUnlocked = initUnlocked;

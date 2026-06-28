@@ -8,12 +8,13 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="css/styles.css?v=3">
   <link rel="stylesheet" href="css/unlocked.css?v=1">
-
-
-
-
-
-
+  <link rel="stylesheet" href="css/termita.css?v=3">
+  <link rel="stylesheet" href="css/simon.css?v=3">
+  <link rel="stylesheet" href="css/arrow.css?v=3">
+  <link rel="stylesheet" href="css/letters.css?v=3">
+  <link rel="stylesheet" href="css/hacking.css?v=3">
+  <link rel="stylesheet" href="css/holematch.css?v=3">
+  <link rel="stylesheet" href="css/colorcount.css?v=3">
   <link rel="stylesheet" href="css/pairs.css?v=3">
   <link rel="stylesheet" href="css/typix.css?v=3">
   <link rel="stylesheet" href="css/Skillcheck.css">
@@ -153,93 +154,6 @@
 
     <!-- ── Game sections (keep all existing content, add back nav) ── -->
 
-    <section id="datarecallgrid" class="view hidden">
-      <div class="game-view-inner">
-        <button class="back-btn" onclick="window.backToMenu('home')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-          Volver al lobby
-        </button>
-        <div class="card">
-          <h2>Data Recall Grid</h2>
-          <p>Memoriza la red de datos y responde bajo presión. Escanea, recuerda, responde.</p>
-          <div class="controls">
-            <label>Objetos:
-              <select data-ui="objectCountSelect">
-                <option value="4">4</option>
-                <option value="6" selected>6</option>
-                <option value="8">8</option>
-              </select>
-            </label>
-            <label>Tiempo visual (s):
-              <select data-ui="displayTimeSelect">
-                <option value="3">3</option>
-                <option value="5" selected>5</option>
-                <option value="7">7</option>
-              </select>
-            </label>
-            <label>Preguntas:
-              <select data-ui="questionCountSelect">
-                <option value="3">3</option>
-                <option value="5" selected>5</option>
-                <option value="7">7</option>
-              </select>
-            </label>
-          </div>
-          <button data-ui="start">Iniciar Escaneo</button>
-          <div data-ui="gridDisplay" class="grid-display"></div>
-          <div data-ui="questionDisplay" class="question-display"></div>
-          <div class="answer-section">
-            <input data-ui="answerInput" type="text" placeholder="Respuesta..." disabled>
-            <button data-ui="submitBtn" disabled>Enviar</button>
-          </div>
-          <div data-ui="messageEl" class="message info">Esperando inicio...</div>
-          <div class="game-stats">
-            <span data-ui="scoreEl">Score: 0</span>
-            <span data-ui="questionCountEl">Question: 0/5</span>
-            <span data-ui="timerEl">Tiempo: --</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="neuralfragment" class="view hidden">
-      <div class="game-view-inner">
-        <button class="back-btn" onclick="window.backToMenu('home')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-          Volver al lobby
-        </button>
-        <div class="card">
-          <h2>Neural Fragment Hack</h2>
-          <p>Reconstruye fragmentos de memoria corrupta. Filtra el ruido y restaura los datos perdidos antes de que la conexión se cierre.</p>
-          <div class="controls">
-            <label>Dificultad:
-              <select data-ui="difficultySelect">
-                <option value="easy">Fácil</option>
-                <option value="normal" selected>Normal</option>
-                <option value="hard">Difícil</option>
-              </select>
-            </label>
-            <label>Fragmentos: 
-              <select data-ui="fragmentCountSelect">
-                <option value="3">3</option>
-                <option value="5" selected>5</option>
-                <option value="7">7</option>
-              </select>
-            </label>
-          </div>
-          <button data-ui="start">Iniciar Hack</button>
-          <div data-ui="fragmentDisplay" class="fragment-display"></div>
-          <div data-ui="optionsGrid" class="options-grid"></div>
-          <div data-ui="messageEl" class="message info">Esperando inicio...</div>
-          <div class="game-stats">
-            <span data-ui="scoreEl">Puntuación: 0</span>
-            <span data-ui="roundEl">Ronda: 1/5</span>
-            <span data-ui="timerEl">Tiempo: --</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
     
     <section id="termita" class="view hidden">
       <div class="game-view-inner">
@@ -252,7 +166,7 @@
           <p>Se mostrará una rejilla de cubos; algunos se iluminan y desaparecen. Señala los cubos que viste iluminados.</p>
           <div class="controls">
             <label>Rejilla:
-              <select data-ui="gridSize">
+              <select id="gridSize">
                 <option value="4">4x4</option>
                 <option value="5">5x5</option>
                 <option value="6">6x6</option>
@@ -260,13 +174,13 @@
                 <option value="10">10x10</option>
               </select>
             </label>
-            <label>Objetivos: <input data-ui="targets" type="number" min="1" value="4" style="width:64px"></label>
-            <label>Tiempo visible (ms): <input data-ui="showTime" type="number" min="100" value="800" style="width:80px"></label>
-            <label>Rondas: <input data-ui="rounds" type="number" min="1" value="5" style="width:64px"></label>
+            <label>Objetivos: <input id="targets" type="number" min="1" value="4" style="width:64px"></label>
+            <label>Tiempo visible (ms): <input id="showTime" type="number" min="100" value="800" style="width:80px"></label>
+            <label>Rondas: <input id="rounds" type="number" min="1" value="5" style="width:64px"></label>
           </div>
-          <button data-ui="start">Empezar</button>
-          <div data-ui="grid" class="grid hidden" aria-hidden="true"></div>
-          <div data-ui="info" class="result"></div>
+          <button id="startTermita">Empezar</button>
+          <div id="grid" class="grid hidden" aria-hidden="true"></div>
+          <div id="termitaInfo" class="result"></div>
         </div>
       </div>
     </section>
@@ -381,19 +295,19 @@
           <p>Repite la secuencia de colores que aparece. Ajusta la dificultad con el número de colores, la longitud inicial, la velocidad de reproducción y las rondas.</p>
           <div class="controls">
             <label>Colores:
-              <select data-ui="colorCount">
+              <select id="colorCount">
                 <option value="4">4</option>
                 <option value="5">5</option>
                 <option value="6">6</option>
               </select>
             </label>
-            <label>Longitud inicial: <input data-ui="baseLength" type="number" min="1" value="3" style="width:64px"></label>
-            <label>Velocidad (ms): <input data-ui="simonSpeed" type="number" min="200" value="700" style="width:80px"></label>
-            <label>Rondas: <input data-ui="simonRounds" type="number" min="1" value="5" style="width:64px"></label>
+            <label>Longitud inicial: <input id="baseLength" type="number" min="1" value="3" style="width:64px"></label>
+            <label>Velocidad (ms): <input id="simonSpeed" type="number" min="200" value="700" style="width:80px"></label>
+            <label>Rondas: <input id="simonRounds" type="number" min="1" value="5" style="width:64px"></label>
           </div>
-          <button data-ui="start">Empezar</button>
-          <div data-ui="simonBoard" class="simon-board hidden"></div>
-          <div data-ui="info" class="result"></div>
+          <button id="startSimon">Empezar</button>
+          <div id="simonBoard" class="simon-board hidden"></div>
+          <div id="simonInfo" class="result"></div>
         </div>
       </div>
     </section>
@@ -412,38 +326,38 @@
                 <p>Completa la secuencia antes de que se acabe el tiempo. Usa el teclado o toca las flechas.</p>
               </div>
               <div class="arrow-status">
-                <span data-ui="arrowPercent">0%</span>
-                <span data-ui="arrowTime">15.0s</span>
+                <span id="arrowPercent">0%</span>
+                <span id="arrowTime">15.0s</span>
               </div>
             </div>
             <div class="arrow-controls">
               <label>Dificultad:
-                <select data-ui="arrowLevel">
+                <select id="arrowLevel">
                   <option value="easy">Fácil</option>
                   <option value="normal" selected>Normal</option>
                   <option value="hard">Difícil</option>
                 </select>
               </label>
-              <label>Pasos: <input data-ui="arrowLength" type="number" min="10" max="30" value="20" style="width:72px"></label>
-              <label>Tiempo (s): <input data-ui="arrowTimeInput" type="number" min="5" max="30" value="15" style="width:72px"></label>
+              <label>Pasos: <input id="arrowLength" type="number" min="10" max="30" value="20" style="width:72px"></label>
+              <label>Tiempo (s): <input id="arrowTimeInput" type="number" min="5" max="30" value="15" style="width:72px"></label>
             </div>
             <div class="arrow-progress-wrapper">
-              <div data-ui="arrowProgress" class="arrow-progress"></div>
+              <div id="arrowProgress" class="arrow-progress"></div>
             </div>
             <div class="arrow-display-wrapper">
-              <div data-ui="arrowDisplay" class="arrow-display">↑</div>
+              <div id="arrowDisplay" class="arrow-display">↑</div>
               <div class="arrow-display-info">
-                <span data-ui="arrowStep">0 / 20</span>
-                <span data-ui="arrowCombo">Combo: 0</span>
+                <span id="arrowStep">0 / 20</span>
+                <span id="arrowCombo">Combo: 0</span>
               </div>
-              <div data-ui="arrowSequence" class="arrow-sequence" aria-live="polite"></div>
+              <div id="arrowSequence" class="arrow-sequence" aria-live="polite"></div>
             </div>
             <div class="arrow-footer">
-              <span data-ui="arrowRecord">Récord: 0%</span>
-              <span data-ui="arrowResult"></span>
+              <span id="arrowRecord">Récord: 0%</span>
+              <span id="arrowResult"></span>
             </div>
-            <button data-ui="start" class="arrow-start-btn">Iniciar</button>
-            <div data-ui="arrowMessage" class="arrow-message hidden"></div>
+            <button id="startArrow" class="arrow-start-btn">Iniciar</button>
+            <div id="arrowMessage" class="arrow-message hidden"></div>
           </div>
         </div>
       </div>
@@ -488,7 +402,7 @@
               <label>
                 Tamaño de la cuadrícula
                 <input
-                  data-ui="hackingSize"
+                  id="hackingSize"
                   type="number"
                   min="5"
                   max="20"
@@ -497,7 +411,7 @@
               <label>
                 Longitud objetivo
                 <input
-                  data-ui="hackingLength"
+                  id="hackingLength"
                   type="number"
                   min="1"
                   max="4"
@@ -510,7 +424,7 @@
               <label>
                 Tiempo límite (segundos)
                 <input
-                  data-ui="hackingTime"
+                  id="hackingTime"
                   type="number"
                   min="3"
                   value="15">
@@ -518,7 +432,7 @@
               <label>
                 Número de rondas
                 <input
-                  data-ui="hackingRounds"
+                  id="hackingRounds"
                   type="number"
                   min="1"
                   value="5">
@@ -529,14 +443,14 @@
               <h3>Opciones</h3>
               <label class="checkbox-row">
                 <input
-                  data-ui="hackingMoveAll"
+                  id="hackingMoveAll"
                   type="checkbox"
                   checked>
                 <span>Mover todas las celdas</span>
               </label>
               <label class="checkbox-row">
                 <input
-                  data-ui="hackingHighlightTarget"
+                  id="hackingHighlightTarget"
                   type="checkbox">
                 <span>Iluminar objetivo</span>
               </label>
@@ -547,24 +461,24 @@
           <!-- HUD -->
           <div class="hacking-top">
             <div class="stats">
-              <span data-ui="hackingStreak">STREAK: 0</span>
-              <span data-ui="hackingMax">MAX STREAK: 0</span>
-              <span data-ui="hackingTimer">TIEMPO: 0.0s</span>
+              <span id="hackingStreak">STREAK: 0</span>
+              <span id="hackingMax">MAX STREAK: 0</span>
+              <span id="hackingTimer">TIEMPO: 0.0s</span>
             </div>
-            <div data-ui="hackingTarget" class="hacking-target">
+            <div id="hackingTarget" class="hacking-target">
               OBJETIVO:
               <strong></strong>
             </div>
           </div>
-          <button data-ui="start">
+          <button id="startHacking">
             Iniciar Hacking
           </button>
           <div
-            data-ui="hackingBoard"
+            id="hackingBoard"
             class="hacking-board hidden"
             aria-hidden="true">
           </div>
-          <div data-ui="hackingInfo" class="result"></div>
+          <div id="hackingInfo" class="result"></div>
         </div>
 
       </div>
@@ -584,29 +498,29 @@
               <p>Escribe las palabras antes de que lleguen a la zona roja. Cada nivel aumenta la dificultad.</p>
             </div>
             <div class="letters-stats">
-              <span data-ui="lettersLevel">Nivel: 1</span>
-              <span data-ui="lettersDifficulty">Dificultad: Normal</span>
-              <span data-ui="lettersScore">Puntuación: 0</span>
-              <span data-ui="lettersBest">Mejor: 0</span>
+              <span id="lettersLevel">Nivel: 1</span>
+              <span id="lettersDifficulty">Dificultad: Normal</span>
+              <span id="lettersScore">Puntuación: 0</span>
+              <span id="lettersBest">Mejor: 0</span>
             </div>
           </div>
-          <div data-ui="lettersArea" class="letters-area">
-            <div class="letters-lives" data-ui="lettersLives"></div>
-            <div data-ui="lettersDanger" class="letters-danger"></div>
+          <div id="lettersArea" class="letters-area">
+            <div class="letters-lives" id="lettersLives"></div>
+            <div id="lettersDanger" class="letters-danger"></div>
           </div>
           <div class="letters-controls">
             <label>Dificultad:
-              <select data-ui="lettersDifficultySelect">
+              <select id="lettersDifficultySelect">
                 <option value="easy">Easy</option>
                 <option value="normal" selected>Normal</option>
                 <option value="hard">Hard</option>
               </select>
             </label>
-            <button data-ui="start" class="letters-start-btn">Iniciar</button>
+            <button id="startLetters" class="letters-start-btn">Iniciar</button>
           </div>
           <div class="letters-input-row">
-            <input data-ui="lettersInput" type="text" autocomplete="off" placeholder="Escribe aquí..." />
-            <div data-ui="lettersMessage" class="letters-message"></div>
+            <input id="lettersInput" type="text" autocomplete="off" placeholder="Escribe aquí..." />
+            <div id="lettersMessage" class="letters-message"></div>
           </div>
         </div>
       </div>
@@ -625,29 +539,29 @@
               <p>Presiona ESPACIO cuando el círculo pase sobre las casillas objetivo del recorrido.</p>
             </div>
             <div class="holematch-status">
-              <span data-ui="holematchProgress">Progreso: 0 / 4</span>
-              <span data-ui="holematchMistakes">Errores: 0</span>
-              <span data-ui="holematchTimer">Tiempo: 20.0s</span>
+              <span id="holematchProgress">Progreso: 0 / 4</span>
+              <span id="holematchMistakes">Errores: 0</span>
+              <span id="holematchTimer">Tiempo: 20.0s</span>
             </div>
           </div>
-          <div data-ui="holematchBoard" class="holematch-board"></div>
-          <div class="holematch-message" data-ui="holematchMessage">Presiona iniciar para comenzar.</div>
+          <div id="holematchBoard" class="holematch-board"></div>
+          <div class="holematch-message" id="holematchMessage">Presiona iniciar para comenzar.</div>
           <div class="holematch-controls">
             <label>Dificultad:
-              <select data-ui="holematchDifficulty">
+              <select id="holematchDifficulty">
                 <option value="easy">Fácil</option>
                 <option value="normal" selected>Normal</option>
                 <option value="hard">Difícil</option>
               </select>
             </label>
             <label>Casillas:
-              <input data-ui="holematchTargetCount" type="number" min="4" max="16" value="8" />
+              <input id="holematchTargetCount" type="number" min="4" max="16" value="8" />
             </label>
-            <button data-ui="start">Iniciar</button>
+            <button id="startHoleMatch">Iniciar</button>
           </div>
           <div class="holematch-guide">Usa ESPACIO para acertar las casillas objetivo en el momento justo.</div>
           <div class="holematch-progress-bar">
-            <div class="holematch-progress-fill" data-ui="holematchProgressBar"></div>
+            <div class="holematch-progress-fill" id="holematchProgressBar"></div>
           </div>
         </div>
       </div>
@@ -666,18 +580,18 @@
               <p>Cuenta cuántos cuadrados del color objetivo aparecen y selecciona la respuesta correcta.</p>
             </div>
             <div class="colorcount-status">
-              <span data-ui="colorcountTimer">Tiempo: 0.0s</span>
-              <span data-ui="colorcountLevel">Nivel: 0 / 5</span>
-              <span data-ui="colorcountScore">Puntos: 0</span>
+              <span id="colorcountTimer">Tiempo: 0.0s</span>
+              <span id="colorcountLevel">Nivel: 0 / 5</span>
+              <span id="colorcountScore">Puntos: 0</span>
             </div>
           </div>
           <div class="colorcount-board">
-            <div data-ui="colorcountQuestion" class="colorcount-question">COUNT THE RED SQUARES</div>
-            <div data-ui="colorcountGrid" class="colorcount-grid"></div>
+            <div id="colorcountQuestion" class="colorcount-question">COUNT THE RED SQUARES</div>
+            <div id="colorcountGrid" class="colorcount-grid"></div>
           </div>
           <div class="colorcount-controls">
             <label>Dificultad:
-              <select data-ui="colorcountDifficulty">
+              <select id="colorcountDifficulty">
                 <option value="easy">Fácil</option>
                 <option value="normal" selected>Normal</option>
                 <option value="hard">Difícil</option>
@@ -685,13 +599,13 @@
               </select>
             </label>
             <label>Tu respuesta:
-              <input data-ui="colorcountAnswer" type="number" min="0" placeholder="0" disabled style="width:80px">
+              <input id="colorcountAnswer" type="number" min="0" placeholder="0" disabled style="width:80px">
             </label>
-            <button data-ui="colorcountSubmit" disabled>Enviar</button>
-            <button data-ui="start">Iniciar</button>
+            <button id="colorcountSubmit" disabled>Enviar</button>
+            <button id="startColorCount">Iniciar</button>
           </div>
-          <div data-ui="colorcountAnswers" class="colorcount-answer-list"></div>
-          <div data-ui="colorcountMessage" class="colorcount-message">Pulsa iniciar para comenzar.</div>
+          <div id="colorcountAnswers" class="colorcount-answer-list"></div>
+          <div id="colorcountMessage" class="colorcount-message">Pulsa iniciar para comenzar.</div>
         </div>
       </div>
     </section>
@@ -1804,9 +1718,8 @@
   <script src="js/backgroundManager.js"></script>
 
   <!-- ── Juegos ── -->
-  <!-- Todos los juegos migrados a GameRegistry.register() + data-ui -->
-  <script src="js/games/datarecallgrid.js"></script>
-  <script src="js/games/neuralfragment.js"></script>
+  <!-- Los que han migrado a GameRegistry.register() se autoinscriben aquí -->
+  <!-- Los legacy exponen window.initXxx / window.stopXxx como antes       -->
   <script src="js/games/termita.js"></script>
   <script src="js/games/simon.js"></script>
   <script src="js/games/arrowGame.js"></script>
@@ -1815,8 +1728,8 @@
   <script src="js/games/holematch.js"></script>
   <script src="js/games/colorcount.js"></script>
   <script src="js/games/pairs.js"></script>
-  <script src="js/games/unlocked.js"></script>
   <script src="js/games/typix.js"></script>
+  <script src="js/games/unlocked.js"></script>
   <script src="js/games/Skillcheck.js"></script>
   <script src="js/games/rapidlines.js"></script>
   <script src="js/games/Maze/mazePlayer.js"></script>
