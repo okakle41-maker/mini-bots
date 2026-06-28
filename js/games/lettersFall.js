@@ -1,15 +1,6 @@
-<<<<<<< HEAD
 (function () {
   'use strict';
 
-=======
-<<<<<<< HEAD
-(function () {
-  'use strict';
-
-=======
->>>>>>> 62391f4243fe7608a90643d819dbb787d8e46119
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff
 class Word {
   constructor(text, x, y, speed) {
     this.text = text;
@@ -267,25 +258,12 @@ class LettersFallGame {
   }
 }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff
 function init(ui) {
   if (!ui.start) return; // sección no presente
 
   const game = new LettersFallGame(ui);
 
   ui.start.addEventListener('click', () => game.start());
-<<<<<<< HEAD
-=======
-=======
-function initLettersFall(ui) {
-  const game = new LettersFallGame(ui);
-
-  ui.startLetters.addEventListener('click', () => game.start());
->>>>>>> 62391f4243fe7608a90643d819dbb787d8e46119
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff
 
   ui.lettersInput.addEventListener('input', (event) => {
     const value = event.target.value;
@@ -314,10 +292,6 @@ function initLettersFall(ui) {
   window.lettersFallGame = game;
 }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff
 function stop() {
   if (window.lettersFallGame) window.lettersFallGame.reset();
 }
@@ -339,12 +313,3 @@ window.GameRegistry.register({
 });
 
 }());
-<<<<<<< HEAD
-=======
-=======
-window.stopLettersFall = function () {
-  if (window.lettersFallGame) window.lettersFallGame.reset();
-};
-window.initLettersFall = initLettersFall;
->>>>>>> 62391f4243fe7608a90643d819dbb787d8e46119
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff

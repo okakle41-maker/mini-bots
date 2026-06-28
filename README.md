@@ -77,10 +77,3 @@ Al ser 100 % estático, sirve cualquier host de archivos:
 ## Licencia
 
 [MIT](./LICENSE)
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-# test1
->>>>>>> 62391f4243fe7608a90643d819dbb787d8e46119
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff

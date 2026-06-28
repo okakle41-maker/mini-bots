@@ -86,10 +86,6 @@
     return store[gameKey] || null;
   }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff
   /**
    * Permite que gameBootstrap (o cualquier otro módulo) extienda
    * GAME_CONFIG con los juegos declarados en gameRegistry.js,
@@ -103,12 +99,6 @@
   }
 
   window.Leaderboard = { save, get, renderBadges, _patchConfig: patchConfig };
-<<<<<<< HEAD
-=======
-=======
-  window.Leaderboard = { save, get, renderBadges };
->>>>>>> 62391f4243fe7608a90643d819dbb787d8e46119
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff
 
   document.addEventListener('DOMContentLoaded', renderBadges);
 })();

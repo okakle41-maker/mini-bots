@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff
 /**
  * js/games/unlocked.js
  *
@@ -60,55 +56,6 @@
       penaltyValue: 5,   // seconds to subtract on error
       mistakeCount: 0,
     };
-<<<<<<< HEAD
-=======
-=======
-function initUnlocked(ui) {
-  const {
-    canvas, startBtn, infoEl,
-    ringCountEl, colorsPerRingEl, granularityEl,
-    timeLimitEl, roundsEl, showTargetsEl, showLabelsEl,
-    scoreEl, timerEl, roundEl, ringIndicatorEl,
-    prevRingBtn, nextRingBtn
-  } = ui;
-
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-
-  const PALETTE = [
-    '#f97316', '#818cf8', '#34d399',
-    '#f43f5e', '#fbbf24', '#22d3ee',
-    '#a78bfa', '#ec4899'
-  ];
-
-  let timerInterval = null;
-  let flashState    = null;
-  let penaltyParts  = [];
-  let shakeFrames   = 0;
-  let shakeAmt      = 0;
-
-  const state = {
-    phase: 'idle',
-    rings: [],
-    selected: 0,
-    ringCount: 3,
-    colorsN: 3,
-    granularity: 4,
-    snapDeg: 30,
-    timeLimit: 0,
-    totalRounds: 3,
-    currentRound: 0,
-    score: 0,
-    timeLeft: 0,
-    solvedRings: [],
-    allSolved: false,
-    ripples: [],
-    startTime: 0,
-    penaltyValue: 5,   // seconds to subtract on error
-    mistakeCount: 0,
-  };
->>>>>>> 62391f4243fe7608a90643d819dbb787d8e46119
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff
 
   /* ── math helpers ── */
   const TAU = Math.PI * 2;
@@ -641,10 +588,6 @@ function initUnlocked(ui) {
 
   drawFrame();
   animLoop();
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff
   }
 
   function stop() {
@@ -669,15 +612,3 @@ function initUnlocked(ui) {
   });
 
 }());
-<<<<<<< HEAD
-=======
-=======
-}
-
-window.stopUnlocked = function () {
-  if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
-  if (typeof state !== 'undefined') state.phase = 'idle';
-};
-window.initUnlocked = initUnlocked;
->>>>>>> 62391f4243fe7608a90643d819dbb787d8e46119
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff

@@ -1,15 +1,6 @@
-<<<<<<< HEAD
 (function () {
   'use strict';
 
-=======
-<<<<<<< HEAD
-(function () {
-  'use strict';
-
-=======
->>>>>>> 62391f4243fe7608a90643d819dbb787d8e46119
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff
 class HoleMatchGame {
   constructor(ui) {
     this.ui = ui;
@@ -51,40 +42,17 @@ class HoleMatchGame {
       }
     });
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff
     if (this.ui.start) {
       this.ui.start.addEventListener('click', () => this.start());
     }
 
     if (this.ui.holematchDifficulty) {
       this.ui.holematchDifficulty.addEventListener('change', () => this.updateDifficulty());
-<<<<<<< HEAD
-=======
-=======
-    if (this.ui.startHoleMatch) {
-      this.ui.startHoleMatch.addEventListener('click', () => this.start());
-    }
-
-    if (this.ui.difficultySelect) {
-      this.ui.difficultySelect.addEventListener('change', () => this.updateDifficulty());
->>>>>>> 62391f4243fe7608a90643d819dbb787d8e46119
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff
     }
   }
 
   updateDifficulty() {
-<<<<<<< HEAD
     const value = this.ui.holematchDifficulty.value;
-=======
-<<<<<<< HEAD
-    const value = this.ui.holematchDifficulty.value;
-=======
-    const value = this.ui.difficultySelect.value;
->>>>>>> 62391f4243fe7608a90643d819dbb787d8e46119
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff
     this.state.difficulty = value;
     if (value === 'easy') {
       this.state.speed = 120;
@@ -121,23 +89,10 @@ class HoleMatchGame {
   }
 
   getRequestedTargetCount() {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff
     if (!this.ui.holematchTargetCount) {
       return this.state.targetCount || 8;
     }
     const value = parseInt(this.ui.holematchTargetCount.value, 10);
-<<<<<<< HEAD
-=======
-=======
-    if (!this.ui.targetCountInput) {
-      return this.state.targetCount || 8;
-    }
-    const value = parseInt(this.ui.targetCountInput.value, 10);
->>>>>>> 62391f4243fe7608a90643d819dbb787d8e46119
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff
     if (Number.isNaN(value)) {
       return this.state.targetCount || 8;
     }
@@ -297,10 +252,6 @@ class HoleMatchGame {
   }
 
   updateUI() {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff
     if (this.ui.holematchProgress) {
       this.ui.holematchProgress.textContent = `Progreso: ${this.state.progress} / ${this.state.targetCount}`;
     }
@@ -316,41 +267,12 @@ class HoleMatchGame {
     if (this.ui.holematchProgressBar) {
       const percent = (this.state.progress / this.state.targetCount) * 100;
       this.ui.holematchProgressBar.style.width = `${percent}%`;
-<<<<<<< HEAD
-=======
-=======
-    if (this.ui.progressText) {
-      this.ui.progressText.textContent = `Progreso: ${this.state.progress} / ${this.state.targetCount}`;
-    }
-    if (this.ui.mistakesText) {
-      this.ui.mistakesText.textContent = `Errores: ${this.state.mistakes}`;
-    }
-    if (this.ui.timerText) {
-      this.ui.timerText.textContent = `Tiempo: ${this.state.timeRemaining.toFixed(1)}s`;
-    }
-    if (this.ui.messageText) {
-      this.ui.messageText.textContent = this.state.message;
-    }
-    if (this.ui.progressBar) {
-      const percent = (this.state.progress / this.state.targetCount) * 100;
-      this.ui.progressBar.style.width = `${percent}%`;
->>>>>>> 62391f4243fe7608a90643d819dbb787d8e46119
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff
     }
   }
 }
 
-<<<<<<< HEAD
 function init(ui) {
   if (!ui.start) return; // sección no presente
-=======
-<<<<<<< HEAD
-function init(ui) {
-  if (!ui.start) return; // sección no presente
-=======
-function initHoleMatch(ui) {
->>>>>>> 62391f4243fe7608a90643d819dbb787d8e46119
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff
   const game = new HoleMatchGame(ui);
   window._holeMatchGame = game;
   if (window.ResizeObserver) {
@@ -358,10 +280,6 @@ function initHoleMatch(ui) {
   }
 }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff
 function stop() {
   if (window._holeMatchGame) window._holeMatchGame.state.active = false;
 }
@@ -382,12 +300,3 @@ window.GameRegistry.register({
 });
 
 }());
-<<<<<<< HEAD
-=======
-=======
-window.stopHoleMatch = function () {
-  if (window._holeMatchGame) window._holeMatchGame.state.active = false;
-};
-window.initHoleMatch = initHoleMatch;
->>>>>>> 62391f4243fe7608a90643d819dbb787d8e46119
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff

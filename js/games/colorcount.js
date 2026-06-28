@@ -1,15 +1,6 @@
-<<<<<<< HEAD
 (function () {
   'use strict';
 
-=======
-<<<<<<< HEAD
-(function () {
-  'use strict';
-
-=======
->>>>>>> 62391f4243fe7608a90643d819dbb787d8e46119
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff
 class ColorCountGame {
   constructor(ui) {
     this.ui = ui;
@@ -38,10 +29,6 @@ class ColorCountGame {
   }
 
   bindEvents() {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff
     if (this.ui.start) {
       this.ui.start.addEventListener('click', () => this.start());
     }
@@ -53,39 +40,13 @@ class ColorCountGame {
         this.state.answer = event.target.value;
       });
       this.ui.colorcountAnswer.addEventListener('keydown', (event) => {
-<<<<<<< HEAD
-=======
-=======
-    if (this.ui.startButton) {
-      this.ui.startButton.addEventListener('click', () => this.start());
-    }
-    if (this.ui.submitButton) {
-      this.ui.submitButton.addEventListener('click', () => this.submitAnswer());
-    }
-    if (this.ui.answerInput) {
-      this.ui.answerInput.addEventListener('input', (event) => {
-        this.state.answer = event.target.value;
-      });
-      this.ui.answerInput.addEventListener('keydown', (event) => {
->>>>>>> 62391f4243fe7608a90643d819dbb787d8e46119
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff
         if (event.key === 'Enter' && this.state.awaitingAnswer) {
           this.submitAnswer();
         }
       });
     }
-<<<<<<< HEAD
     if (this.ui.colorcountDifficulty) {
       this.ui.colorcountDifficulty.addEventListener('change', (event) => {
-=======
-<<<<<<< HEAD
-    if (this.ui.colorcountDifficulty) {
-      this.ui.colorcountDifficulty.addEventListener('change', (event) => {
-=======
-    if (this.ui.difficultySelect) {
-      this.ui.difficultySelect.addEventListener('change', (event) => {
->>>>>>> 62391f4243fe7608a90643d819dbb787d8e46119
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff
         this.state.difficulty = event.target.value;
       });
     }
@@ -113,18 +74,8 @@ class ColorCountGame {
     this.state.message = `Escribe cuántos cuadros ${this.state.targetColor} viste.`;
     this.renderGrid();
     this.updateUI();
-<<<<<<< HEAD
     if (this.ui.colorcountAnswer) {
       this.ui.colorcountAnswer.focus();
-=======
-<<<<<<< HEAD
-    if (this.ui.colorcountAnswer) {
-      this.ui.colorcountAnswer.focus();
-=======
-    if (this.ui.answerInput) {
-      this.ui.answerInput.focus();
->>>>>>> 62391f4243fe7608a90643d819dbb787d8e46119
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff
     }
   }
 
@@ -166,27 +117,12 @@ class ColorCountGame {
   }
 
   renderGrid() {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff
     if (!this.ui.colorcountGrid) return;
     const size = this.state.gridSize;
     this.ui.colorcountGrid.innerHTML = '';
     this.ui.colorcountGrid.style.gridTemplateColumns = `repeat(${size}, minmax(0, 1fr))`;
     this.ui.colorcountGrid.style.justifyItems = 'stretch';
     this.ui.colorcountGrid.style.alignItems = 'stretch';
-<<<<<<< HEAD
-=======
-=======
-    if (!this.ui.gridContainer) return;
-    const size = this.state.gridSize;
-    this.ui.gridContainer.innerHTML = '';
-    this.ui.gridContainer.style.gridTemplateColumns = `repeat(${size}, minmax(0, 1fr))`;
-    this.ui.gridContainer.style.justifyItems = 'stretch';
-    this.ui.gridContainer.style.alignItems = 'stretch';
->>>>>>> 62391f4243fe7608a90643d819dbb787d8e46119
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff
 
     const displayColors = this.state.active && this.state.showGrid
       ? this.state.cells
@@ -199,15 +135,7 @@ class ColorCountGame {
       if (color !== 'hidden') {
         square.setAttribute('aria-label', `Cuadro de color ${color}`);
       }
-<<<<<<< HEAD
       this.ui.colorcountGrid.appendChild(square);
-=======
-<<<<<<< HEAD
-      this.ui.colorcountGrid.appendChild(square);
-=======
-      this.ui.gridContainer.appendChild(square);
->>>>>>> 62391f4243fe7608a90643d819dbb787d8e46119
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff
     });
   }
 
@@ -259,10 +187,6 @@ class ColorCountGame {
   }
 
   updateUI() {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff
     if (this.ui.colorcountQuestion) {
       if (!this.state.active) {
         this.ui.colorcountQuestion.textContent = 'Pulsa iniciar para comenzar';
@@ -288,59 +212,16 @@ class ColorCountGame {
     }
     if (this.ui.colorcountSubmit) {
       this.ui.colorcountSubmit.disabled = !this.state.awaitingAnswer;
-<<<<<<< HEAD
-=======
-=======
-    if (this.ui.questionText) {
-      if (!this.state.active) {
-        this.ui.questionText.textContent = 'Pulsa iniciar para comenzar';
-      } else if (this.state.awaitingAnswer) {
-        this.ui.questionText.textContent = `¿Cuántos cuadros ${this.state.targetColor} viste?`;
-      } else {
-        this.ui.questionText.textContent = `Observa los cuadros ${this.state.targetColor}`;
-      }
-    }
-
-    if (this.ui.messageBox) {
-      this.ui.messageBox.textContent = this.state.message;
-      this.ui.messageBox.className = 'colorcount-message';
-      if (this.state.result === 'success') this.ui.messageBox.classList.add('colorcount-success');
-      if (this.state.result === 'failed') this.ui.messageBox.classList.add('colorcount-failed');
-    }
-
-    if (this.ui.answerInput) {
-      this.ui.answerInput.disabled = !this.state.awaitingAnswer;
-      if (!this.state.awaitingAnswer) {
-        this.ui.answerInput.value = '';
-      }
-    }
-    if (this.ui.submitButton) {
-      this.ui.submitButton.disabled = !this.state.awaitingAnswer;
->>>>>>> 62391f4243fe7608a90643d819dbb787d8e46119
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff
     }
   }
 }
 
-<<<<<<< HEAD
 function init(ui) {
   if (!ui.start) return; // sección no presente
-=======
-<<<<<<< HEAD
-function init(ui) {
-  if (!ui.start) return; // sección no presente
-=======
-function initColorCount(ui) {
->>>>>>> 62391f4243fe7608a90643d819dbb787d8e46119
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff
   const game = new ColorCountGame(ui);
   window._colorCountGame = game;
 }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff
 function stop() {
   if (window._colorCountGame) window._colorCountGame.state.active = false;
 }
@@ -361,13 +242,3 @@ window.GameRegistry.register({
 });
 
 }());
-<<<<<<< HEAD
-=======
-=======
-window.stopColorCount = function () {
-  if (window._colorCountGame) window._colorCountGame.state.active = false;
-};
-
-window.initColorCount = initColorCount;
->>>>>>> 62391f4243fe7608a90643d819dbb787d8e46119
->>>>>>> fa33d63056b6f29821bdf6e960006ebcd1e764ff
