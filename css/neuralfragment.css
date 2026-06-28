@@ -1,0 +1,331 @@
+/**
+ * css/neuralfragment.css
+ * Neural Fragment Hack - Estilo cyberpunk/glitch
+ */
+
+#neuralfragment {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+  min-height: 100vh;
+  padding: 2rem;
+  font-family: 'Courier New', monospace;
+}
+
+#neuralfragment .game-view-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+#neuralfragment .card {
+  background: rgba(0, 255, 136, 0.05);
+  border: 1px solid #00ff88;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.2), inset 0 0 60px rgba(0, 255, 136, 0.05);
+}
+
+#neuralfragment h2 {
+  color: #00ff88;
+  text-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: glitch 3s infinite;
+}
+
+@keyframes glitch {
+  0%, 90%, 100% { transform: translate(0); }
+  92% { transform: translate(-2px, 1px); }
+  94% { transform: translate(2px, -1px); }
+  96% { transform: translate(-1px, 2px); }
+  98% { transform: translate(1px, -2px); }
+}
+
+#neuralfragment p {
+  color: #00ff88;
+  opacity: 0.8;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+#neuralfragment .controls {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  border-radius: 4px;
+}
+
+#neuralfragment label {
+  color: #00ff88;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#neuralfragment select,
+#neuralfragment input {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid #00ff88;
+  color: #00ff88;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+}
+
+#neuralfragment select:focus,
+#neuralfragment input:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+#neuralfragment button[data-ui="start"] {
+  background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+  color: #0a0a0a;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+}
+
+#neuralfragment button[data-ui="start"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(0, 255, 136, 0.6);
+}
+
+#neuralfragment button[data-ui="start"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+#neuralfragment .fragment-display {
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid #00ff88;
+  border-radius: 8px;
+  padding: 2rem;
+  margin: 2rem 0;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  box-shadow: inset 0 0 30px rgba(0, 255, 136, 0.1);
+  animation: pulse-border 2s infinite;
+}
+
+@keyframes pulse-border {
+  0%, 100% { border-color: #00ff88; }
+  50% { border-color: #00cc6a; }
+}
+
+#neuralfragment .fragment-item {
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid #00ff88;
+  color: #00ff88;
+  padding: 0.8rem 1.2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 4px;
+  text-shadow: 0 0 5px #00ff88;
+  animation: flicker 0.5s infinite;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+#neuralfragment .fragment-gap {
+  background: rgba(255, 0, 85, 0.2);
+  border: 1px dashed #ff0055;
+  color: #ff0055;
+  padding: 0.8rem 1.2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 4px;
+  animation: glitch-gap 0.3s infinite;
+}
+
+@keyframes glitch-gap {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  75% { transform: translateX(2px); }
+}
+
+#neuralfragment .fragment-separator {
+  color: #00ff88;
+  opacity: 0.5;
+  font-size: 1.2rem;
+}
+
+#neuralfragment .options-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+#neuralfragment .option-group {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+#neuralfragment .option-label {
+  color: #00ff88;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  min-width: 120px;
+}
+
+#neuralfragment .option-btn {
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid #00ff88;
+  color: #00ff88;
+  padding: 0.8rem 1.5rem;
+  font-size: 1.1rem;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  flex: 1;
+  min-width: 100px;
+}
+
+#neuralfragment .option-btn:hover {
+  background: rgba(0, 255, 136, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+#neuralfragment .option-btn.selected {
+  background: #00ff88;
+  color: #0a0a0a;
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+}
+
+#neuralfragment .message {
+  text-align: center;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#neuralfragment .message.info {
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid #00ff88;
+  color: #00ff88;
+}
+
+#neuralfragment .message.success {
+  background: rgba(0, 255, 136, 0.2);
+  border: 1px solid #00ff88;
+  color: #00ff88;
+  animation: success-pulse 0.5s ease;
+}
+
+@keyframes success-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+#neuralfragment .message.error {
+  background: rgba(255, 0, 85, 0.2);
+  border: 1px solid #ff0055;
+  color: #ff0055;
+  animation: error-shake 0.5s ease;
+}
+
+@keyframes error-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+#neuralfragment .game-stats {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  border-radius: 4px;
+  margin-top: 1.5rem;
+}
+
+#neuralfragment .game-stats span {
+  color: #00ff88;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+/* Scanline effect */
+#neuralfragment::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.1) 0px,
+    rgba(0, 0, 0, 0.1) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* CRT flicker effect */
+@keyframes crt-flicker {
+  0% { opacity: 0.97; }
+  5% { opacity: 0.95; }
+  10% { opacity: 0.9; }
+  15% { opacity: 0.95; }
+  20% { opacity: 0.99; }
+  25% { opacity: 0.95; }
+  30% { opacity: 0.9; }
+  35% { opacity: 0.96; }
+  40% { opacity: 0.98; }
+  45% { opacity: 0.95; }
+  50% { opacity: 0.99; }
+  55% { opacity: 0.93; }
+  60% { opacity: 0.9; }
+  65% { opacity: 0.96; }
+  70% { opacity: 1; }
+  75% { opacity: 0.97; }
+  80% { opacity: 0.95; }
+  85% { opacity: 0.93; }
+  90% { opacity: 0.9; }
+  95% { opacity: 0.96; }
+  100% { opacity: 0.98; }
+}
+
+#neuralfragment .card {
+  animation: crt-flicker 0.15s infinite;
+}
